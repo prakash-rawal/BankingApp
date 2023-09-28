@@ -2,13 +2,13 @@ import React,{useReducer} from 'react';
 
 import './index.css';
 
-import FetchToDoApi from './FetchApi/ShowingCardsApi';
+import CurrencyConverter from './FetchApi/CurrencyConverter';
 
 function App() {
 
   return (
     <>
-      <FetchToDoApi />
+      <CurrencyConverter />
     
     </>
   );
