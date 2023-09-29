@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function FetchToDoApi() {
+function ShwingCardsApi() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -38,4 +38,4 @@ function FetchToDoApi() {
     );
 }
 
-export default FetchToDoApi;
+export default ShwingCardsApi;
