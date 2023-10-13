@@ -18,6 +18,15 @@ function CreateAccount({ dispatch }) {
         setStatus(status);
     }
 
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+        setError(''); // Clear the error message when the name input changes.
+    }
+
+    const handlePanNumChange = (e) => {
+        setPanNum(e.target.value);
+        setError(''); // Clear the error message when the PAN number input changes.
+    }
     const CreateAccount = () => {
         if (name && panNum) {
             const generateRandomNumber = () => Math.floor(Math.random() * 10000000000);
@@ -43,7 +52,7 @@ function CreateAccount({ dispatch }) {
             setName("");
             setPanNum("");
         } else {
-            console.log("enter both value");
+            setError("Enter both Input Field");
         }
     }
 
@@ -52,7 +61,7 @@ function CreateAccount({ dispatch }) {
                 <div className="main">
                 <h1>Create Account</h1>
                 <label htmlFor="">Enter Name:</label>
-                <input type="text" placeholder="Enter Your Name" value={name} onChange={(e) => setName(e.target.value)} /><br />
+                <input type="text" placeholder="Enter Your Name" value={name} onChange={handleNameChange} /><br />
                 <br />
                 <label>Do You Have an Pan Card:</label>
                 <label>Yes</label>
@@ -62,18 +71,23 @@ function CreateAccount({ dispatch }) {
                 {status === 1 ?
                     <div style={{ display: 'block' }} >
                         <label htmlFor="">Enter Pan Number:</label>
-                        <input type="number" placeholder="Enter Pan No" value={panNum} onChange={(e) => setPanNum(e.target.value)} /><br />
+                        <input type="number" placeholder="Enter Pan No" value={panNum} onChange={handlePanNumChange} /><br />
+                        
                         <button onClick={CreateAccount}>Create Account</button>
                     </div> : <div style={{ display: 'none' }} ></div>
                 }
-            
+                
             {   detail && (
                 <div>
                     Account Number : {detail.acc_num} <br />
                     Pin : {detail.pin}
                 </div>
-            )
-            }
+            )}
+
+              {/* Display the error message */}
+              {error && (
+                <div style={{ color: 'red' }}>{error}</div>
+            )}
        </div>
         </>
     )
